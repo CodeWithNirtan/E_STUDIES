@@ -1,0 +1,13 @@
+.nav-item:hover > a.nav-link span{
+    background: var(--secondary);
+    color: var(--white);
+    padding: 5px 20px;
+    border-radius: 30px;
+    
+}
+
+.nav-item > a > span{
+    padding: 5px 20px;
+    transition: .3s all ease;
+    border-radius: 30px;
+}

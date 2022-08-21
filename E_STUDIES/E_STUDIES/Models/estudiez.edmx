@@ -1,0 +1,823 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="estudiezModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Academic_process">
+          <Key>
+            <PropertyRef Name="Academic_process_id" />
+          </Key>
+          <Property Name="Academic_process_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Score_id" Type="int" />
+          <Property Name="Academic_Message" Type="varchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="Contact_us">
+          <Key>
+            <PropertyRef Name="Contact_us_id" />
+          </Key>
+          <Property Name="Contact_us_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" />
+          <Property Name="Subjects" Type="varchar" MaxLength="250" />
+          <Property Name="Contact_us_messages" Type="varchar" MaxLength="400" />
+          <Property Name="email" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Feedbacks">
+          <Key>
+            <PropertyRef Name="Feedback_id" />
+          </Key>
+          <Property Name="Feedback_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" />
+          <Property Name="Subjects" Type="varchar" MaxLength="250" />
+          <Property Name="Feedback_messages" Type="varchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="Parents_data">
+          <Key>
+            <PropertyRef Name="Parents_data_id" />
+          </Key>
+          <Property Name="Parents_data_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Parent_Name" Type="varchar" MaxLength="250" />
+          <Property Name="phone" Type="bigint" />
+          <Property Name="Cnic" Type="varchar" MaxLength="20" />
+          <Property Name="Parents_address" Type="varchar" MaxLength="250" />
+          <Property Name="userid" Type="int" />
+        </EntityType>
+        <EntityType Name="Revision_classes">
+          <Key>
+            <PropertyRef Name="Revision_class_id" />
+          </Key>
+          <Property Name="Revision_class_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Class_start_date" Type="datetime" />
+          <Property Name="Class_time" Type="time" Precision="7" />
+          <Property Name="userid" Type="int" />
+        </EntityType>
+        <EntityType Name="Score_details">
+          <Key>
+            <PropertyRef Name="Score_id" />
+          </Key>
+          <Property Name="Score_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Total_Marks" Type="int" />
+          <Property Name="Score_receive" Type="int" />
+          <Property Name="Issued_date" Type="datetime" />
+          <Property Name="Score_description" Type="varchar" MaxLength="400" />
+          <Property Name="userid" Type="int" />
+          <Property Name="course" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="Student_data">
+          <Key>
+            <PropertyRef Name="Student_data_id" />
+          </Key>
+          <Property Name="Student_data_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fullname" Type="varchar" MaxLength="250" />
+          <Property Name="Enrollment_date" Type="datetime" />
+          <Property Name="Student_address" Type="varchar" MaxLength="250" />
+          <Property Name="Student_age" Type="int" />
+          <Property Name="phone" Type="bigint" />
+          <Property Name="Student_image" Type="varchar" MaxLength="250" />
+          <Property Name="Teacher_data_id" Type="int" />
+          <Property Name="userid" Type="int" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Study_resources">
+          <Key>
+            <PropertyRef Name="Resources_id" />
+          </Key>
+          <Property Name="Resources_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="250" />
+          <Property Name="Url_link" Type="varchar" MaxLength="250" />
+          <Property Name="userid" Type="int" />
+          <Property Name="Res_status" Type="bit" />
+          <Property Name="res_desc" Type="varchar" MaxLength="20" />
+          <Property Name="res_img" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Teacher_data">
+          <Key>
+            <PropertyRef Name="Teacher_data_id" />
+          </Key>
+          <Property Name="Teacher_data_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fullname" Type="varchar" MaxLength="250" />
+          <Property Name="Teacher_image" Type="varchar" MaxLength="250" />
+          <Property Name="phone" Type="bigint" />
+          <Property Name="userid" Type="int" />
+          <Property Name="Teacher_address" Type="varchar" MaxLength="250" />
+          <Property Name="Marital_status" Type="varchar" MaxLength="250" />
+          <Property Name="age" Type="int" />
+          <Property Name="gender" Type="varchar" MaxLength="20" />
+          <Property Name="Qualification" Type="varchar" MaxLength="20" />
+          <Property Name="Experience" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email_ID" Type="varchar" MaxLength="250" />
+          <Property Name="phone" Type="bigint" />
+          <Property Name="user_name" Type="varchar" MaxLength="250" />
+          <Property Name="User_password" Type="varchar" MaxLength="250" />
+          <Property Name="User_role" Type="int" />
+        </EntityType>
+        <Association Name="FK__Academic___Score__3A81B327">
+          <End Role="Score_details" Type="Self.Score_details" Multiplicity="0..1" />
+          <End Role="Academic_process" Type="Self.Academic_process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Score_details">
+              <PropertyRef Name="Score_id" />
+            </Principal>
+            <Dependent Role="Academic_process">
+              <PropertyRef Name="Score_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contact_u__useri__29572725">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Contact_us" Type="Self.Contact_us" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Contact_us">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedback__userid__2C3393D0">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Feedbacks">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parents_d__useri__403A8C7D">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Parents_data" Type="Self.Parents_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Parents_data">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Revision___useri__31EC6D26">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Revision_classes" Type="Self.Revision_classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Revision_classes">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Score_det__useri__37A5467C">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Score_details" Type="Self.Score_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Score_details">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student_d__Teach__48CFD27E">
+          <End Role="Teacher_data" Type="Self.Teacher_data" Multiplicity="0..1" />
+          <End Role="Student_data" Type="Self.Student_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher_data">
+              <PropertyRef Name="Teacher_data_id" />
+            </Principal>
+            <Dependent Role="Student_data">
+              <PropertyRef Name="Teacher_data_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student_d__useri__49C3F6B7">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Student_data" Type="Self.Student_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Student_data">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Study_res__useri__2F10007B">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Study_resources" Type="Self.Study_resources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Study_resources">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher_d__useri__45F365D3">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Teacher_data" Type="Self.Teacher_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Teacher_data">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ChangeStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="resource_status" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="estudiezModelStoreContainer">
+          <EntitySet Name="Academic_process" EntityType="Self.Academic_process" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact_us" EntityType="Self.Contact_us" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedbacks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parents_data" EntityType="Self.Parents_data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Revision_classes" EntityType="Self.Revision_classes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Score_details" EntityType="Self.Score_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student_data" EntityType="Self.Student_data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Study_resources" EntityType="Self.Study_resources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher_data" EntityType="Self.Teacher_data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Academic___Score__3A81B327" Association="Self.FK__Academic___Score__3A81B327">
+            <End Role="Score_details" EntitySet="Score_details" />
+            <End Role="Academic_process" EntitySet="Academic_process" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contact_u__useri__29572725" Association="Self.FK__Contact_u__useri__29572725">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Contact_us" EntitySet="Contact_us" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedback__userid__2C3393D0" Association="Self.FK__Feedback__userid__2C3393D0">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Feedbacks" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parents_d__useri__403A8C7D" Association="Self.FK__Parents_d__useri__403A8C7D">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Parents_data" EntitySet="Parents_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Revision___useri__31EC6D26" Association="Self.FK__Revision___useri__31EC6D26">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Revision_classes" EntitySet="Revision_classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Score_det__useri__37A5467C" Association="Self.FK__Score_det__useri__37A5467C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Score_details" EntitySet="Score_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student_d__Teach__48CFD27E" Association="Self.FK__Student_d__Teach__48CFD27E">
+            <End Role="Teacher_data" EntitySet="Teacher_data" />
+            <End Role="Student_data" EntitySet="Student_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student_d__useri__49C3F6B7" Association="Self.FK__Student_d__useri__49C3F6B7">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Student_data" EntitySet="Student_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Study_res__useri__2F10007B" Association="Self.FK__Study_res__useri__2F10007B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Study_resources" EntitySet="Study_resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher_d__useri__45F365D3" Association="Self.FK__Teacher_d__useri__45F365D3">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teacher_data" EntitySet="Teacher_data" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="estudiezModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email_ID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Int64" />
+          <Property Name="user_name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="User_password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="User_role" Type="Int32" />
+          <NavigationProperty Name="Contact_us" Relationship="estudiezModel.FK__Contact_u__useri__29572725" FromRole="User" ToRole="Contact_us" />
+          <NavigationProperty Name="Parents_data" Relationship="estudiezModel.FK__Parents_d__useri__403A8C7D" FromRole="User" ToRole="Parents_data" />
+          <NavigationProperty Name="Revision_classes" Relationship="estudiezModel.FK__Revision___useri__31EC6D26" FromRole="User" ToRole="Revision_classes" />
+          <NavigationProperty Name="Score_details" Relationship="estudiezModel.FK__Score_det__useri__37A5467C" FromRole="User" ToRole="Score_details" />
+          <NavigationProperty Name="Student_data" Relationship="estudiezModel.FK__Student_d__useri__49C3F6B7" FromRole="User" ToRole="Student_data" />
+          <NavigationProperty Name="Study_resources" Relationship="estudiezModel.FK__Study_res__useri__2F10007B" FromRole="User" ToRole="Study_resources" />
+          <NavigationProperty Name="Teacher_data" Relationship="estudiezModel.FK__Teacher_d__useri__45F365D3" FromRole="User" ToRole="Teacher_data" />
+          <NavigationProperty Name="Feedbacks" Relationship="estudiezModel.FK__Feedback__userid__2C3393D0" FromRole="User" ToRole="Feedback" />
+        </EntityType>
+        <EntityContainer Name="estudiezEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Academic_process" EntityType="estudiezModel.Academic_process" />
+          <EntitySet Name="Contact_us" EntityType="estudiezModel.Contact_us" />
+          <EntitySet Name="Parents_data" EntityType="estudiezModel.Parents_data" />
+          <EntitySet Name="Revision_classes" EntityType="estudiezModel.Revision_classes" />
+          <EntitySet Name="Score_details" EntityType="estudiezModel.Score_details" />
+          <EntitySet Name="Student_data" EntityType="estudiezModel.Student_data" />
+          <EntitySet Name="Study_resources" EntityType="estudiezModel.Study_resources" />
+          <EntitySet Name="Teacher_data" EntityType="estudiezModel.Teacher_data" />
+          <AssociationSet Name="FK__Academic___Score__3A81B327" Association="estudiezModel.FK__Academic___Score__3A81B327">
+            <End Role="Score_details" EntitySet="Score_details" />
+            <End Role="Academic_process" EntitySet="Academic_process" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contact_u__useri__29572725" Association="estudiezModel.FK__Contact_u__useri__29572725">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Contact_us" EntitySet="Contact_us" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parents_d__useri__403A8C7D" Association="estudiezModel.FK__Parents_d__useri__403A8C7D">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Parents_data" EntitySet="Parents_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Revision___useri__31EC6D26" Association="estudiezModel.FK__Revision___useri__31EC6D26">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Revision_classes" EntitySet="Revision_classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Score_det__useri__37A5467C" Association="estudiezModel.FK__Score_det__useri__37A5467C">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Score_details" EntitySet="Score_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student_d__Teach__48CFD27E" Association="estudiezModel.FK__Student_d__Teach__48CFD27E">
+            <End Role="Teacher_data" EntitySet="Teacher_data" />
+            <End Role="Student_data" EntitySet="Student_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student_d__useri__49C3F6B7" Association="estudiezModel.FK__Student_d__useri__49C3F6B7">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Student_data" EntitySet="Student_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Study_res__useri__2F10007B" Association="estudiezModel.FK__Study_res__useri__2F10007B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Study_resources" EntitySet="Study_resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher_d__useri__45F365D3" Association="estudiezModel.FK__Teacher_d__useri__45F365D3">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Teacher_data" EntitySet="Teacher_data" />
+          </AssociationSet>
+          <FunctionImport Name="Parents_data_sp" ReturnType="Collection(estudiezModel.Parents_data_sp_Result)">
+          <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Student_data_sp" ReturnType="Collection(estudiezModel.Student_data_sp_Result)">
+          <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Teacher_data_sp" ReturnType="Collection(estudiezModel.Teacher_data_sp_Result)">
+          <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ChangeStatus">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="resource_status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <EntitySet Name="Feedbacks" EntityType="estudiezModel.Feedback" />
+          <AssociationSet Name="FK__Feedback__userid__2C3393D0" Association="estudiezModel.FK__Feedback__userid__2C3393D0">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <FunctionImport Name="ChangeStatus1">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="res_status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="ChangeStatus2">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="resource_status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Academic_process">
+          <Key>
+            <PropertyRef Name="Academic_process_id" />
+          </Key>
+          <Property Name="Academic_process_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Score_id" Type="Int32" />
+          <Property Name="Academic_Message" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Score_details" Relationship="estudiezModel.FK__Academic___Score__3A81B327" FromRole="Academic_process" ToRole="Score_details" />
+        </EntityType>
+        <EntityType Name="Contact_us">
+          <Key>
+            <PropertyRef Name="Contact_us_id" />
+          </Key>
+          <Property Name="Contact_us_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" />
+          <Property Name="Subjects" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_us_messages" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="estudiezModel.FK__Contact_u__useri__29572725" FromRole="Contact_us" ToRole="User" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Parents_data">
+          <Key>
+            <PropertyRef Name="Parents_data_id" />
+          </Key>
+          <Property Name="Parents_data_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parent_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Int64" />
+          <Property Name="Cnic" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Parents_address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="estudiezModel.FK__Parents_d__useri__403A8C7D" FromRole="Parents_data" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Revision_classes">
+          <Key>
+            <PropertyRef Name="Revision_class_id" />
+          </Key>
+          <Property Name="Revision_class_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Class_start_date" Type="DateTime" Precision="3" />
+          <Property Name="Class_time" Type="Time" Precision="7" />
+          <Property Name="userid" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="estudiezModel.FK__Revision___useri__31EC6D26" FromRole="Revision_classes" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Score_details">
+          <Key>
+            <PropertyRef Name="Score_id" />
+          </Key>
+          <Property Name="Score_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Total_Marks" Type="Int32" />
+          <Property Name="Score_receive" Type="Int32" />
+          <Property Name="Issued_date" Type="DateTime" Precision="3" />
+          <Property Name="Score_description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="Int32" />
+          <NavigationProperty Name="Academic_process" Relationship="estudiezModel.FK__Academic___Score__3A81B327" FromRole="Score_details" ToRole="Academic_process" />
+          <NavigationProperty Name="User" Relationship="estudiezModel.FK__Score_det__useri__37A5467C" FromRole="Score_details" ToRole="User" />
+          <Property Name="course" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Student_data">
+          <Key>
+            <PropertyRef Name="Student_data_id" />
+          </Key>
+          <Property Name="Student_data_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fullname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Enrollment_date" Type="DateTime" Precision="3" />
+          <Property Name="Student_address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Student_age" Type="Int32" />
+          <Property Name="phone" Type="Int64" />
+          <Property Name="Student_image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Teacher_data_id" Type="Int32" />
+          <Property Name="userid" Type="Int32" />
+          <NavigationProperty Name="Teacher_data" Relationship="estudiezModel.FK__Student_d__Teach__48CFD27E" FromRole="Student_data" ToRole="Teacher_data" />
+          <NavigationProperty Name="User" Relationship="estudiezModel.FK__Student_d__useri__49C3F6B7" FromRole="Student_data" ToRole="User" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Study_resources">
+          <Key>
+            <PropertyRef Name="Resources_id" />
+          </Key>
+          <Property Name="Resources_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Url_link" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="estudiezModel.FK__Study_res__useri__2F10007B" FromRole="Study_resources" ToRole="User" />
+          <Property Name="Res_status" Type="Boolean" />
+          <Property Name="res_desc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="res_img" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Teacher_data">
+          <Key>
+            <PropertyRef Name="Teacher_data_id" />
+          </Key>
+          <Property Name="Teacher_data_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fullname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Teacher_image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Int64" />
+          <Property Name="userid" Type="Int32" />
+          <NavigationProperty Name="Student_data" Relationship="estudiezModel.FK__Student_d__Teach__48CFD27E" FromRole="Teacher_data" ToRole="Student_data" />
+          <NavigationProperty Name="User" Relationship="estudiezModel.FK__Teacher_d__useri__45F365D3" FromRole="Teacher_data" ToRole="User" />
+          <Property Name="Teacher_address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Marital_status" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Qualification" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Experience" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Academic___Score__3A81B327">
+          <End Type="estudiezModel.Score_details" Role="Score_details" Multiplicity="0..1" />
+          <End Type="estudiezModel.Academic_process" Role="Academic_process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Score_details">
+              <PropertyRef Name="Score_id" />
+            </Principal>
+            <Dependent Role="Academic_process">
+              <PropertyRef Name="Score_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contact_u__useri__29572725">
+          <End Type="estudiezModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="estudiezModel.Contact_us" Role="Contact_us" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Contact_us">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parents_d__useri__403A8C7D">
+          <End Type="estudiezModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="estudiezModel.Parents_data" Role="Parents_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Parents_data">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Revision___useri__31EC6D26">
+          <End Type="estudiezModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="estudiezModel.Revision_classes" Role="Revision_classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Revision_classes">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Score_det__useri__37A5467C">
+          <End Type="estudiezModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="estudiezModel.Score_details" Role="Score_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Score_details">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student_d__Teach__48CFD27E">
+          <End Type="estudiezModel.Teacher_data" Role="Teacher_data" Multiplicity="0..1" />
+          <End Type="estudiezModel.Student_data" Role="Student_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher_data">
+              <PropertyRef Name="Teacher_data_id" />
+            </Principal>
+            <Dependent Role="Student_data">
+              <PropertyRef Name="Teacher_data_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student_d__useri__49C3F6B7">
+          <End Type="estudiezModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="estudiezModel.Student_data" Role="Student_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Student_data">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Study_res__useri__2F10007B">
+          <End Type="estudiezModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="estudiezModel.Study_resources" Role="Study_resources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Study_resources">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher_d__useri__45F365D3">
+          <End Type="estudiezModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="estudiezModel.Teacher_data" Role="Teacher_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Teacher_data">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Parents_data_sp_Result">
+          <Property Type="Int32" Name="userid" Nullable="false" />
+          <Property Type="String" Name="Email_ID" Nullable="true" MaxLength="250" />
+          <Property Type="Int64" Name="phone" Nullable="true" />
+          <Property Type="String" Name="user_name" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="User_password" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="User_role" Nullable="true" />
+          <Property Type="Int32" Name="Parents_data_id" Nullable="false" />
+          <Property Type="String" Name="Parent_Name" Nullable="true" MaxLength="250" />
+          <Property Type="Int64" Name="phone1" Nullable="true" />
+          <Property Type="String" Name="Cnic" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Parents_address" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="userid1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Student_data_sp_Result">
+          <Property Type="Int32" Name="userid" Nullable="false" />
+          <Property Type="String" Name="Email_ID" Nullable="true" MaxLength="250" />
+          <Property Type="Int64" Name="phone" Nullable="true" />
+          <Property Type="String" Name="user_name" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="User_password" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="User_role" Nullable="true" />
+          <Property Type="Int32" Name="Student_data_id" Nullable="false" />
+          <Property Type="String" Name="Fullname" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="Enrollment_date" Nullable="true" />
+          <Property Type="String" Name="Student_address" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Student_age" Nullable="true" />
+          <Property Type="Int64" Name="phone1" Nullable="true" />
+          <Property Type="String" Name="Student_image" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Teacher_data_id" Nullable="true" />
+          <Property Type="Int32" Name="userid1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Teacher_data_sp_Result">
+          <Property Type="Int32" Name="userid" Nullable="false" />
+          <Property Type="String" Name="Email_ID" Nullable="true" MaxLength="250" />
+          <Property Type="Int64" Name="phone" Nullable="true" />
+          <Property Type="String" Name="user_name" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="User_password" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="User_role" Nullable="true" />
+          <Property Type="Int32" Name="Teacher_data_id" Nullable="false" />
+          <Property Type="String" Name="Fullname" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Teacher_image" Nullable="true" MaxLength="250" />
+          <Property Type="Int64" Name="phone1" Nullable="true" />
+          <Property Type="Int32" Name="userid1" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Feedback_id" />
+          </Key>
+          <Property Name="Feedback_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" />
+          <Property Name="Subjects" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Feedback_messages" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="estudiezModel.FK__Feedback__userid__2C3393D0" FromRole="Feedback" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Feedback__userid__2C3393D0">
+          <End Type="estudiezModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="estudiezModel.Feedback" Role="Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="estudiezModelStoreContainer" CdmEntityContainer="estudiezEntities">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(estudiezModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="Email_ID" ColumnName="Email_ID" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="User_password" ColumnName="User_password" />
+          <ScalarProperty Name="User_role" ColumnName="User_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Academic_process">
+      <EntityTypeMapping TypeName="IsTypeOf(estudiezModel.Academic_process)">
+        <MappingFragment StoreEntitySet="Academic_process">
+          <ScalarProperty Name="Academic_process_id" ColumnName="Academic_process_id" />
+          <ScalarProperty Name="Score_id" ColumnName="Score_id" />
+          <ScalarProperty Name="Academic_Message" ColumnName="Academic_Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contact_us">
+      <EntityTypeMapping TypeName="IsTypeOf(estudiezModel.Contact_us)">
+        <MappingFragment StoreEntitySet="Contact_us">
+          <ScalarProperty Name="Contact_us_id" ColumnName="Contact_us_id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="Subjects" ColumnName="Subjects" />
+          <ScalarProperty Name="Contact_us_messages" ColumnName="Contact_us_messages" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parents_data">
+      <EntityTypeMapping TypeName="IsTypeOf(estudiezModel.Parents_data)">
+        <MappingFragment StoreEntitySet="Parents_data">
+          <ScalarProperty Name="Parents_data_id" ColumnName="Parents_data_id" />
+          <ScalarProperty Name="Parent_Name" ColumnName="Parent_Name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="Cnic" ColumnName="Cnic" />
+          <ScalarProperty Name="Parents_address" ColumnName="Parents_address" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Revision_classes">
+      <EntityTypeMapping TypeName="IsTypeOf(estudiezModel.Revision_classes)">
+        <MappingFragment StoreEntitySet="Revision_classes">
+          <ScalarProperty Name="Revision_class_id" ColumnName="Revision_class_id" />
+          <ScalarProperty Name="Class_start_date" ColumnName="Class_start_date" />
+          <ScalarProperty Name="Class_time" ColumnName="Class_time" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Score_details">
+      <EntityTypeMapping TypeName="IsTypeOf(estudiezModel.Score_details)">
+        <MappingFragment StoreEntitySet="Score_details">
+          <ScalarProperty Name="Score_id" ColumnName="Score_id" />
+          <ScalarProperty Name="Total_Marks" ColumnName="Total_Marks" />
+          <ScalarProperty Name="Score_receive" ColumnName="Score_receive" />
+          <ScalarProperty Name="Issued_date" ColumnName="Issued_date" />
+          <ScalarProperty Name="Score_description" ColumnName="Score_description" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="course" ColumnName="course" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_data">
+      <EntityTypeMapping TypeName="IsTypeOf(estudiezModel.Student_data)">
+        <MappingFragment StoreEntitySet="Student_data">
+          <ScalarProperty Name="Student_data_id" ColumnName="Student_data_id" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Enrollment_date" ColumnName="Enrollment_date" />
+          <ScalarProperty Name="Student_address" ColumnName="Student_address" />
+          <ScalarProperty Name="Student_age" ColumnName="Student_age" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="Student_image" ColumnName="Student_image" />
+          <ScalarProperty Name="Teacher_data_id" ColumnName="Teacher_data_id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Study_resources">
+      <EntityTypeMapping TypeName="IsTypeOf(estudiezModel.Study_resources)">
+        <MappingFragment StoreEntitySet="Study_resources">
+          <ScalarProperty Name="Resources_id" ColumnName="Resources_id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Url_link" ColumnName="Url_link" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="Res_status" ColumnName="Res_status" />
+          <ScalarProperty Name="res_desc" ColumnName="res_desc" />
+          <ScalarProperty Name="res_img" ColumnName="res_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teacher_data">
+      <EntityTypeMapping TypeName="IsTypeOf(estudiezModel.Teacher_data)">
+        <MappingFragment StoreEntitySet="Teacher_data">
+          <ScalarProperty Name="Teacher_data_id" ColumnName="Teacher_data_id" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Teacher_image" ColumnName="Teacher_image" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="Teacher_address" ColumnName="Teacher_address" />
+          <ScalarProperty Name="Marital_status" ColumnName="Marital_status" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+          <ScalarProperty Name="Experience" ColumnName="Experience" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="IsTypeOf(estudiezModel.Feedback)">
+        <MappingFragment StoreEntitySet="Feedbacks">
+          <ScalarProperty Name="Feedback_id" ColumnName="Feedback_id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="Subjects" ColumnName="Subjects" />
+          <ScalarProperty Name="Feedback_messages" ColumnName="Feedback_messages" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ChangeStatus2" FunctionName="estudiezModel.Store.ChangeStatus" />
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

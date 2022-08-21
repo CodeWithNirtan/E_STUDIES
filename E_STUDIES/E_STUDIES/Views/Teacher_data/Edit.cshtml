@@ -1,0 +1,257 @@
+﻿@model E_STUDIES.Models.Students_data_viewmodels.Teacher_DataViewmodel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+    E_STUDIES.Models.User u_data = ViewBag.data;
+}
+
+
+
+
+
+<link rel="stylesheet" href="~/css/editprofile.css" />
+<link rel="stylesheet" href="~/css/root.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<div class="container rounded bg-white mt-3 mb-3">
+    <div class="row">
+
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" src="~/Images/@ViewBag.teacherimg" height="250px" width="250px">
+                <h5 class="font-weight-bold Heading_text">@u_data.user_name</h5>
+                <span class="text-black-50">@u_data.Email_ID</span>
+                <span></span>
+            </div>
+        </div>
+        <div class="col-md-8 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right Heading_text">Profile Settings</h4>
+                </div>
+                @using (Html.BeginForm("edit", "Teacher_data", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.Teacher_data_id);
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <div class="floating-label">
+                                @*<input placeholder="Name" type="text" name="Name" id="Name"
+                                autocomplete="off">*@
+                                @Html.EditorFor(model => model.Fullname, new
+                           {
+                               htmlAttributes = new
+                               {
+                                  @class = "input",
+                                   placeholder = "Name",
+                                   type = "text",
+                                   name = "Name",
+                                   id = "Name",
+                                   autocomplete = "off"
+                               }
+                           })
+                                @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
+                                <label for="Name">Name:</label>
+                                <div class="icon">
+                                    <?xml version="1.0" encoding="UTF-8" ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            @*<div class="floating-label">
+                                <input placeholder="Email" type="email" name="Email" id="Email"
+                                       autocomplete="off">
+                                <label for="Email">Email:</label>
+                                <div class="icon">
+                                    <?xml version="1.0" encoding="UTF-8" ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>*@
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="floating-label">
+                                @*<input placeholder="Age" type="number" name="Age" id="Age"
+                                autocomplete="off">*@
+                                @Html.EditorFor(model => model.age, new
+                           {
+                               htmlAttributes = new
+                               {
+                                   placeholder = "Age",
+                                   type = "number",
+                                   name = "Age",
+                                   id = "Age",
+                                   autocomplete = "off"
+                               }
+                           })
+                                @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
+                                <label for="Age">Age:</label>
+                                <div class="icon">
+                                    <?xml version="1.0" encoding="UTF-8" ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="floating-label">
+                                @*<input placeholder="Gender" type="Gender" name="gender" id="gender"
+        autocomplete="off">*@
+                                @Html.EditorFor(model => model.gender, new
+                                {
+                                    placeholder = "Gender",
+                                    type = "Gender",
+                                    name = "gender",
+                                    id = "gender",
+                                       autocomplete = "off"
+                                })
+                                <label for="Gender">Gender:</label>
+                                <div class="icon">
+                                    <?xml version="1.0" encoding="UTF-8" ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                                    </svg>
+
+                                </div>
+                                @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="file" name="imagedata" id="imagedata" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="floating-label">
+                                @*<input placeholder="Phone Number" type="number" name="Phone" id="PhoneNumber"
+                                autocomplete="off">*@
+                                @Html.EditorFor(model => model.phone, new
+                           {
+                               htmlAttributes = new
+                               {
+
+                                   placeholder = "Phone Number",
+                                   type = "number",
+                                   name = "Phone",
+                                   id = "PhoneNumber",
+                                   autocomplete = "off"
+                               }
+                           })
+                                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                <label for="Phone">Phone:</label>
+                                <div class="icon">
+                                    <?xml version="1.0" encoding="UTF-8" ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="floating-label">
+                                @*<input placeholder="Address" type="text" name="Address" id="Address"
+                                autocomplete="off">*@
+                                @Html.EditorFor(model => model.Teacher_address, new { name = "Address", id = "Address" })
+
+                                @Html.ValidationMessageFor(model => model.Teacher_address, "", new { @class = "text-danger" })
+                                <label for="Address">Address:</label>
+                                <div class="icon">
+                                    <?xml version="1.0" encoding="UTF-8" ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="floating-label">
+                                @*<input placeholder="Marital Status" type="text" name="Marital Status" id="MaritalStatus"
+                                       autocomplete="off">*@
+                                @Html.EditorFor(model => model.Marital_status, new
+                           {
+                               htmlAttributes = new
+                               {
+                                   id = "MaritalStatus",
+                                   autocomplete = "off",
+                                   name = "Marital Status"
+                               }
+                           })
+                                @Html.ValidationMessageFor(model => model.Marital_status, "", new { @class = "text-danger" })
+                                <label for="Marital Status">Marital Status:</label>
+                                <div class="icon">
+                                    <?xml version="1.0" encoding="UTF-8" ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                        <div class="p-3 py-5">
+                            <div class="align-items-center d-flex justify-content-between mb-3">
+                                <h4 class="text-right Heading_text">Edit Experience</h4>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="floating-label">
+
+
+
+                                    @Html.EditorFor(model => model.Qualification, new { htmlAttributes = new { id = "Qualification", autocomplete = "off", name = "Qualification" } })
+                                    @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-danger" })
+                                    <label for="Qualification">Qualification:</label>
+                                    <div class="icon">
+                                        <?xml version="1.0" encoding="UTF-8" ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="floating-label">
+
+                                    @Html.EditorFor(model => model.Experience, new { htmlAttributes = new { name = "Experience", id = "Experience", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "text-danger" })
+                                    <label for="Experience">Experience:</label>
+                                    <div class="icon">
+                                        <?xml version="1.0" encoding="UTF-8" ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="mt-5 text-center">
+                        <button class="button_pri" type="submit">Save Profile</button>
+                    </div>
+            </div>
+                }
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+     

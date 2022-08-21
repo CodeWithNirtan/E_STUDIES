@@ -1,0 +1,370 @@
+﻿@model IEnumerable<E_STUDIES.Models.Study_resources>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using Microsoft.AspNet.Identity;
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero">
+    <div class="container position-relative">
+        <div class="row gy-5" data-aos="fade-in">
+            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+                <h2>Welcome To <span>Your Portal</span></h2>
+                <p>Manage Your Activities Here, And Slowly Excel in Your Field Of Education. </p>
+                <!-- <div class="d-flex justify-content-center justify-content-lg-start">
+                  <a href="#about" class="btn-get-started">Get Started</a>
+                  <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                </div> -->
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2">
+                <img src="./assets/img/vectorS.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+            </div>
+        </div>
+    </div>
+
+    <div class="icon-boxes position-relative">
+        <div class="container position-relative">
+            <div class="row gy-4 mt-5 justify-content-center">
+
+                @if (User.IsInRole("3"))
+                {
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-person-square"></i></div>
+                            <h4 class="title"><a href="" class="stlretched-link">Manage Students</a></h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-bookmarks"></i></div>
+                            <h4 class="title"><a href="" class="stretched-link">Manage Resources</a></h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-easel"></i></div>
+                            <h4 class="title"><a href="" class="stretched-link">Manage Classes</a></h4>
+                        </div>
+                    </div>
+                    <!--End Icon Box -->
+                }
+
+                @if (User.IsInRole("1"))
+                {
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-book"></i></div>
+                            <h4 class="title"><a href="#progress" class="stretched-link">My Academic Progress</a></h4>
+                        </div>
+                    </div>
+                    <!--End Icon Box -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-bookmarks"></i></div>
+                            <h4 class="title"><a href="#E_Resources" class="stretched-link">My E-Resources</a></h4>
+                        </div>
+                    </div>
+                    <!--End Icon Box -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-person-square"></i></div>
+                            <h4 class="title"><a href="#" class="stretched-link">My Classes</a></h4>
+                        </div>
+                    </div>
+                    <!--End Icon Box -->
+                }
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+</section>
+<!-- End Hero Section -->
+
+<main id="main">
+
+    <!-- ======= Curriculum Section ======= -->
+    <section id="curriculum" class="portfolio sections-bg">
+        <div class="container" data-aos="fade-up">
+            @if (User.IsInRole("2"))
+            {
+                <div class="section-header">
+                    <h2>Your Child's Curriculum</h2>
+                    <p>Here You Can See Your Child's Current Curriculum Of This Year.</p>
+                </div>
+            }
+            else
+            {
+                <div class="section-header">
+                    <h2>Your Curriculum</h2>
+                    <p>Here You Can See Your Current Curriculum Of This Year.</p>
+                </div>
+            }
+
+            <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
+
+                <div>
+                    <ul class="portfolio-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <li data-filter=".filter-Designing">Web Designing</li>
+                        <li data-filter=".filter-programming">Programming</li>
+                        <li data-filter=".filter-dbms">DBMS</li>
+                        <li data-filter=".filter-development">App Development</li>
+                    </ul><!-- End Portfolio Filters -->
+                </div>
+
+                <div class="row gy-4 portfolio-container">
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-development">
+                        <div class="portfolio-wrap">
+                            <a href="~/assets/img/curriculum/flutter.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/flutter.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">Flutter</a></h4>
+                                <p>Everything is a Widget.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-dbms">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/sql.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/sql.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">Sql</a></h4>
+                                <p>Structured Query Language.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-Designing">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/html.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/html.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">Html</a></h4>
+                                <p>Hypertext Markup language.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-programming">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/PHP.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/PHP.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">PHP</a></h4>
+                                <p>Hypertext Preprocessor.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-development">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/Android.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/Android.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">Android Studio</a></h4>
+                                <p>(IDE) for Android app development.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-dbms">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/mysql.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/mysql.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">MySql</a></h4>
+                                <p>MySQL is an open-source (RDBMS).</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-Designing">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/css.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/css.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">Css</a></h4>
+                                <p>Cascading Style Sheet.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-programming">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/javascript.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/javascript.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">JavaScript</a></h4>
+                                <p>JS stands for JavaScript.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-development">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/java.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/java.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">Java</a></h4>
+                                <p>Write once, run anywhere (WORA)</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-dbms">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/oracle.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/oracle.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">Oracle</a></h4>
+                                <p>Runs faster. Costs less. And never breaks</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-Designing">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/Bootstrap.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="~/assets/img/curriculum/Bootstrap.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">Bootstrap</a></h4>
+                                <p>Bootstrap is free CSS framework </p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-xl-4 col-md-6 portfolio-item filter-programming">
+                        <div class="portfolio-wrap">
+                            <a href="assets/img/curriculum/Python.jpg" class="glightbox"><img src="~/assets/img/curriculum/Python.jpg" class="img-fluid" alt=""></a>
+                            <div class="portfolio-info">
+                                <h4><a href="portfolio-details.html" title="More Details">Python</a></h4>
+                                <p>Life is short (You need Python)</p>
+                            </div>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                </div><!-- End Portfolio Container -->
+
+            </div>
+
+        </div>
+    </section><!-- End Curriculum Section -->
+    <!-- ======= Testimonials Section ======= -->
+    <section id="E_Resources" class="testimonials">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                @if (User.IsInRole("3"))
+                {
+                    <h2>Your Students E-Resources</h2>
+                    <p>Here You See Find All Your Students Resources Uploaded By You.</p>
+                }
+                @if (User.IsInRole("1"))
+                {
+                    <h2>Your E-Resources</h2>
+                    <p>Here You Can Find All Your Class Resources Uploaded By Your Teacher, And/Or Your Course Related Resources.</p>
+                }
+
+            </div>
+
+            <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    @foreach (var item in Model)
+                    {
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="~/Images/@item.res_img" class="testimonial-img flex-shrink-0" alt="">
+                                    <div>
+                                        <h3>@item.Title</h3>
+                                        <h4><a href="@item.Url_link" style="font-size: 10px;">@item.Url_link</a></h4>
+                                      
+                                    </div>
+                                </div>
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    @item.res_desc
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+                    }
+
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section><!-- End Testimonials Section -->
+    <!-- ======= About Us Section ======= -->
+    <section id="feedback" class="about">
+        <div class="container" data-aos="fade-up">
+
+            @if (User.IsInRole("3"))
+            {
+                <div class="section-header">
+                    <h2>Feedback</h2>
+                    <p>Here You Will Be Able To See What Feedback, And Response Your Student And Their Parents Has For You. And Also Share Your Own Feedback</p>
+                </div>
+
+                <div class="row gy-4">
+                    <div class="col-lg-6">
+                        <h3>Your Students Feedback About You...</h3>
+                        <img src="~/assets/img/S_feed.svg" class="mb-4" alt="">
+                        <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur consectetur fugiat voluptas ea.</p>
+                        <p>Temporibus nihil enim deserunt sed ea. Provident sit expedita aut cupiditate nihil vitae quo officia vel. Blanditiis eligendi possimus et in cum.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="content ps-0 ps-lg-5">
+                            <h3>Parents Feedback About You...</h3>
+                            <p>
+                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+                            </p>
+                            <p>
+                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+                            </p>
+
+                            <div class="position-relative mt-4">
+                                <img src="~/assets/img/2968305.svg" class="" alt="">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("1"))
+            {
+                <div class="section-header">
+                    <h2>Feedback</h2>
+                    <p>Here You Will Be Able To See What Feedback, And Response Your Teacher Has For You. Share Your Own Feedback, With Your Teacher</p>
+                </div>
+
+                <div class="row gy-4">
+                    <div class="col-lg-6">
+                        <h3>Your Teachers Feedback</h3>
+                        <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur consectetur fugiat voluptas ea.</p>
+                        <p>Temporibus nihil enim deserunt sed ea. Provident sit expedita aut cupiditate nihil vitae quo officia vel. Blanditiis eligendi possimus et in cum. Quidem eos ut sint rem veniam qui. Ut ut repellendus nobis tempore doloribus debitis explicabo similique sit. Accusantium sed ut omnis beatae neque deleniti repellendus.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="content ps-0 ps-lg-5">
+                            <img src="~/assets/img/2968305.svg" class="img-fluid rounded-4 mb-4" alt="">
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="row">
+                <div class="col-12 text-center mt-5">
+                    <button class="button_sec">Submit Your Feedback</button>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Feedback Section -->
+
+</main><!-- End #main -->

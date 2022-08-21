@@ -1,0 +1,176 @@
+﻿@model E_STUDIES.Models.Study_resources
+
+@{
+    ViewBag.Title = "Create";
+
+}
+
+@if (ViewBag.success != null)
+{
+    <div class="alert alert-success">
+        <p>@ViewBag.success</p>
+    </div>
+}
+@if (ViewBag.error != null)
+{
+    <div class="alert alert-success">
+        <p>@ViewBag.error</p>
+    </div>
+}
+<link href="~/css/CreateResources.css" rel="stylesheet" />
+
+@*<div class="container">
+        <h2>Create</h2>
+        @using (Html.BeginForm("Create", "Study_resources", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Study_resources</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Url_link, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Url_link, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Url_link, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.userid, "userid", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("userid", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.userid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.res_desc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.res_desc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.res_desc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Resource Image</label>
+                    <div class="col-md-10">
+                        <input type="file" name="imageData" id="imageData" class="form-control" />
+                        @if (ViewBag.imgerror != null)
+                        {
+                            <div class="alert alert-danger">
+                                <p>@ViewBag.imgerror</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>*@
+
+
+<div class="mx-auto mt-5">
+    <div class="Login_form p-3 bg-white mx-auto col-xl-5 col-lg-6 col-md-8 col-sm-12 col-xs-12 col-12 mx-auto">
+        @using (Html.BeginForm("Create", "Study_resources", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="mx-auto mb-3 text-center">
+                <h2>Create Resources</h2>
+            </div>
+            <div class="floating-label">
+                @*<input class="input" placeholder="Title" type="text" name="Title" id="email" autocomplete="off">*@
+                @Html.TextBoxFor(model => model.Title, new { @class="input", placeholder = "Title", name = "Title", id = "email", autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                <label for="Title">Title:</label>
+                <div class="icon">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M5 5.5C5 6.33 5.67 7 6.5 7h4v10.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V7h4c.83 0 1.5-.67 1.5-1.5S18.33 4 17.5 4h-11C5.67 4 5 4.67 5 5.5z" />
+                    </svg>
+
+                </div>
+            </div>
+            <div class="floating-label">
+                @*<input class="input" placeholder="Url" type="url" name="Url" id="email" autocomplete="off">*@
+                @Html.TextBoxFor(model => model.Url_link, new { @class = "input", placeholder = "Url",  name = "Url", id = "email", autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Url_link, "", new { @class = "text-danger" })
+                <label for="Url">Url:</label>
+                <div class="icon">
+                    <?xml version="1.0" encoding="UTF-8" ?>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path d="M9.44,28a4.37,4.37,0,0,0,3.08-1.27l6.22-6.22a4.34,4.34,0,0,0,.3-5.76.65.65,0,0,0-.15-.18l-.18-.19h0a1,1,0,0,0-1.41,1.41h0a2.33,2.33,0,0,1,0,3.29L11.1,25.31a2.34,2.34,0,0,1-3.32,0L6.69,24.22a2.34,2.34,0,0,1,0-3.32l2.73-2.74A1,1,0,1,0,8,16.75L5.27,19.48a4.36,4.36,0,0,0,0,6.15l1.1,1.1A4.35,4.35,0,0,0,9.44,28Z" />
+                        <path d="M25.63,5.27a4.36,4.36,0,0,0-6.15,0l-6.22,6.22a4.34,4.34,0,0,0-.3,5.76.65.65,0,0,0,.15.18l.18.19h0a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41h0a2.33,2.33,0,0,1,0-3.29L20.9,6.69a2.34,2.34,0,0,1,3.32,0l1.09,1.09a2.34,2.34,0,0,1,0,3.32l-2.73,2.74A1,1,0,1,0,24,15.25l2.74-2.73a4.36,4.36,0,0,0,0-6.15Z" />
+                    </svg>
+
+                </div>
+            </div>
+            <div class="floating-label">
+                @*<input class="input" placeholder="Description" type="text" name="Description" id="email"
+                autocomplete="off">*@
+                @Html.TextBoxFor(model => model.res_desc, new
+           { @class = "input",
+               type = "text",
+               placeholder = "Description",
+               name = "Description",
+               id = "email",
+               autocomplete = "off"
+           })
+                @Html.ValidationMessageFor(model => model.res_desc, "", new { @class = "text-danger" })
+                <label for="Description">Description:</label>
+                <div class="icon">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
+                    </svg>
+
+                </div>
+            </div>
+            <div class="floating-label mb-3">
+
+                <input class="input1" type="file" name="imageData" id="imageData" autocomplete="off">
+                @if (ViewBag.imgerror != null)
+                {
+                    <div class="alert alert-danger">
+                        <p>@ViewBag.imgerror</p>
+                    </div>
+                }
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g data-name="Layer 2">
+                            <g data-name="image">
+                                <path d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1z" />
+                                <circle cx="8" cy="8.5" r="1.5" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+            </div>
+
+            <div class="col-7 mx-auto">
+                <button class="button_sec Login" type="submit">Create</button>
+            </div>
+            <!-- <a href="https://codepen.io/elujambio/pen/yjwzGP" class="discrete" target="_blank">Basic version</a> -->
+        }
+        </div>
+
+    </div>

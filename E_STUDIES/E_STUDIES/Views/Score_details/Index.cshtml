@@ -1,0 +1,101 @@
+﻿@model IEnumerable<E_STUDIES.Models.Score_details>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.course)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Marks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Score_receive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Issued_date)
+        </th>
+        <th>
+         Remarks
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Email_ID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.course)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_Marks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score_receive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Issued_date)
+            </td>
+            <td>
+                <p style="display:none" id="remarks'@item.Score_id'">@Html.DisplayFor(modelItem => item.Score_description)</p>
+                @*<button type="button">Remarks</button>*@
+                <button type="button" class="btn btn-primary" onclick="Remark(@item.Score_id)">
+                    Remarks
+                </button>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email_ID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Score_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Score_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Score_id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Student Remarks</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body Remark_print" id="Remark_print">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+    function Remark(id) {
+
+        document.getElementById("Remark_print").innerText = "";
+        var print = document.getElementById("remarks'" + id + "'").innerText;
+        var display = document.getElementById("Remark_print").innerText = print;
+        $('#exampleModal').modal("show");
+
+    }
+
+</script>

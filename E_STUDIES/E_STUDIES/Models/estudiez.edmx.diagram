@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="17af0096974c4942a2fee400a544c3cc" Name="Diagram1">
+        <EntityTypeShape EntityType="estudiezModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="estudiezModel.Academic_process" Width="1.5" PointX="5.25" PointY="23.625" />
+        <EntityTypeShape EntityType="estudiezModel.Contact_us" Width="1.5" PointX="3" PointY="20.5" />
+        <EntityTypeShape EntityType="estudiezModel.Parents_data" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="estudiezModel.Revision_classes" Width="1.5" PointX="3" PointY="11.125" />
+        <EntityTypeShape EntityType="estudiezModel.Score_details" Width="1.5" PointX="3" PointY="23.25" />
+        <EntityTypeShape EntityType="estudiezModel.Student_data" Width="1.5" PointX="5.25" PointY="13.25" />
+        <EntityTypeShape EntityType="estudiezModel.Study_resources" Width="1.5" PointX="3" PointY="17.75" />
+        <EntityTypeShape EntityType="estudiezModel.Teacher_data" Width="1.5" PointX="3" PointY="26.625" />
+        <AssociationConnector Association="estudiezModel.FK__Academic___Score__3A81B327" />
+        <AssociationConnector Association="estudiezModel.FK__Contact_u__useri__29572725" />
+        <AssociationConnector Association="estudiezModel.FK__Parents_d__useri__403A8C7D" />
+        <AssociationConnector Association="estudiezModel.FK__Revision___useri__31EC6D26" />
+        <AssociationConnector Association="estudiezModel.FK__Score_det__useri__37A5467C" />
+        <AssociationConnector Association="estudiezModel.FK__Student_d__Teach__48CFD27E" />
+        <AssociationConnector Association="estudiezModel.FK__Student_d__useri__49C3F6B7" />
+        <AssociationConnector Association="estudiezModel.FK__Study_res__useri__2F10007B" />
+        <AssociationConnector Association="estudiezModel.FK__Teacher_d__useri__45F365D3" />
+        <EntityTypeShape EntityType="estudiezModel.Feedback" Width="1.5" PointX="3" PointY="1.625" />
+        <AssociationConnector Association="estudiezModel.FK__Feedback__userid__2C3393D0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

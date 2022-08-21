@@ -1,0 +1,61 @@
+﻿@model E_STUDIES.Models.Score_details
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Score_details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.course)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_Marks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Marks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score_receive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score_receive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Issued_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Issued_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email_ID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Score_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<E_STUDIES.Models.Study_resources>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+
+    <tr>
+     
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Url_link)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.res_desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.res_img)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        
+        <tr>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url_link)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.res_desc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.res_img)
+            </td>
+
+            <td>
+                @using (Html.BeginForm("ChangeStatus", "Study_resources", FormMethod.Post, new { id = "submitform" }))
+                {
+                    Html.AntiForgeryToken();
+                    <input type="hidden" name="Resources_id" value="@Html.DisplayFor(modelitem=>item.Resources_id)" id="Resources_id" />
+                    <select name="Res_status" id="Res_status" value="select">
+                        <option value="Active">Active</option>
+                        <option value="Deactive">Deactive</option>
+                    </select>
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+
+    $("#Res_status").on("change", () => {
+
+        $("#submitform").submit();
+    })
+
+</script>

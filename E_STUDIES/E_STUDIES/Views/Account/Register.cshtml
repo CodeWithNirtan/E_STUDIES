@@ -1,0 +1,618 @@
+﻿@model E_STUDIES.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>RegisterViewModel</h4>
+            <input type="hidden" value="" />
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                   @if (ViewBag.emailerror != null) {
+                    <div class="alert alert-danger">
+                        <p>@ViewBag.emailerror</p>
+                    </div>
+                   }
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.user_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.user_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.user_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.User_role, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.User_role, htmlAttributes: new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@
+
+
+
+@{
+    Layout = null;
+}
+
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/login.css">
+    <link rel="stylesheet" href="~/Fonts/Poppins-Regular.ttf">
+    <link rel="stylesheet" href="~/css/root.css">
+
+    <body class="bg-image">
+        <div class="mx-auto text-center">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="">
+                    <div class="row m-auto">
+                        <div class="col-lg-6 col-md-8 col-sm-12 mt-4 mb-3 Registration_form">
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="mx-auto mb-3"><img src="~/Images/Login_logo.png" width="170" height="170" alt="Logo" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="floating-label">
+                                                        @*<input placeholder="Full Name" type="text" name="Full Name" id="FullName" autocomplete="off" />*@
+                                                        @Html.EditorFor(model => model.user_name, new { htmlAttributes = new { @class = "input", id = "FullName", autocomplete = "off", placeholder = "Full Name" } })
+                                                        @Html.ValidationMessageFor(model => model.user_name, "", new { @class = "text-danger" })
+                                                        <label for="Full Name">Full Name:</label>
+                                                        <div class="icon">
+                                                            <?xml version="1.0" encoding="UTF-8" ?>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                                <path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                                                            </svg>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="floating-label">
+                                                        @*<input placeholder="Email" type="email" name="email" id="email" autocomplete="off" />*@
+                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input", placeholder = "Email", id = "email", autocomplete = "off" } })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                        <label for="email">Email:</label>
+                                                        <div class="icon">
+                                                            <?xml version="1.0" encoding="UTF-8" ?>
+                                                            <svg enable-background="new 0 0 100 100" version="1.1" viewBox="0 0 100 100"
+                                                                 xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                                            <style type="text/css">
+                                                                    .st0 {
+                                                                        fill: none;
+                                                                    }
+        </style>
+                                                            <g transform="translate(0 -952.36)">
+                                                            <path d="m17.5 977c-1.3 0-2.4 1.1-2.4 2.4v45.9c0 1.3 1.1 2.4 2.4 2.4h64.9c1.3 0 2.4-1.1 2.4-2.4v-45.9c0-1.3-1.1-2.4-2.4-2.4h-64.9zm2.4 4.8h60.2v1.2l-30.1 22-30.1-22v-1.2zm0 7l28.7 21c0.8 0.6 2 0.6 2.8 0l28.7-21v34.1h-60.2v-34.1z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        </g>
+                                                            <rect class="st0" width="100" height="100" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                    </svg>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="floating-label">
+                                                        @*<input placeholder="Phone Number" type="number" name="Phone Number" id="PhoneNumber"
+                            autocomplete="off" />*@
+                                                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "input", placeholder = "Phone Number", id = "PhoneNumber", autocomplete = "off" } })
+                                                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                                        <label for="Phone Number">Phone Number:</label>
+                                                        <div class="icon">
+                                                            <?xml version="1.0" encoding="UTF-8" ?>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                                                <path d="M27.308,20.649l-2.2-2.2a3.521,3.521,0,0,0-4.938-.021,2.152,2.152,0,0,1-2.729.267A15.026,15.026,0,0,1,13.3,14.562a2.181,2.181,0,0,1,.284-2.739A3.521,3.521,0,0,0,13.553,6.9l-2.2-2.2a3.514,3.514,0,0,0-4.961,0l-.633.634c-3.3,3.3-3.053,10.238,3.813,17.1,4.14,4.141,8.307,5.875,11.686,5.875a7.5,7.5,0,0,0,5.418-2.061l.634-.634A3.513,3.513,0,0,0,27.308,20.649ZM25.894,24.2l-.634.634c-2.6,2.6-8.339,2.125-14.276-3.813S4.571,9.34,7.171,6.74L7.8,6.107a1.511,1.511,0,0,1,2.133,0l2.2,2.2a1.511,1.511,0,0,1,.021,2.11,4.181,4.181,0,0,0-.531,5.239,17.01,17.01,0,0,0,4.713,4.706,4.179,4.179,0,0,0,5.231-.517,1.512,1.512,0,0,1,2.118.013l2.2,2.2A1.51,1.51,0,0,1,25.894,24.2Z" />
+                                                            </svg>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cool-md-12">
+                                                    <div class="floating-label">
+                                                        @*<input placeholder="Password" type="password" name="password" id="password" autocomplete="off" />*@
+                                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input", placeholder = "Password", id = "email", autocomplete = "off" } })
+                                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                        <label for="password">Password:</label>
+                                                        <div class="icon">
+
+                                                            <?xml version="1.0" encoding="UTF-8" ?>
+                                                            <svg enable-background="new 0 0 24 24" version="1.1" viewBox="0 0 24 24"
+                                                                 xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                                            <style type="text/css">
+                                                                    .st0 {
+                                                                        fill: none;
+                                                                    }
+
+                                                                    .st1 {
+                                                                        fill: #010101;
+                                                                    }
+        </style>
+                                                            <rect class="st0" width="24" height="24" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            <path class="st1" d="M19,21H5V9h14V21z M6,20h12V10H6V20z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            <path class="st1"
+                                                                  d="M16.5,10h-1V7c0-1.9-1.6-3.5-3.5-3.5S8.5,5.1,8.5,7v3h-1V7c0-2.5,2-4.5,4.5-4.5s4.5,2,4.5,4.5V10z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            <path class="st1"
+                                                                  d="m12 16.5c-0.8 0-1.5-0.7-1.5-1.5s0.7-1.5 1.5-1.5 1.5 0.7 1.5 1.5-0.7 1.5-1.5 1.5zm0-2c-0.3 0-0.5 0.2-0.5 0.5s0.2 0.5 0.5 0.5 0.5-0.2 0.5-0.5-0.2-0.5-0.5-0.5z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                    </svg>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="floating-label">
+                                                        @*<input placeholder="Confirm Password" type="password" name="Confirm password" id="password"
+                            autocomplete="off" />*@
+                                                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "input", placeholder = "Confirm Password", id = "email", autocomplete = "off" } })
+                                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                                        <label for="Confirm password">Confirm Password:</label>
+                                                        <div class="icon">
+
+                                                            <?xml version="1.0" encoding="UTF-8" ?>
+                                                            <svg enable-background="new 0 0 24 24" version="1.1" viewBox="0 0 24 24"
+                                                                 xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                                            <style type="text/css">
+                                                                    .st0 {
+                                                                        fill: none;
+                                                                    }
+
+                                                                    .st1 {
+                                                                        fill: #010101;
+                                                                    }
+        </style>
+                                                            <rect class="st0" width="24" height="24" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            <path class="st1" d="M19,21H5V9h14V21z M6,20h12V10H6V20z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            <path class="st1"
+                                                                  d="M16.5,10h-1V7c0-1.9-1.6-3.5-3.5-3.5S8.5,5.1,8.5,7v3h-1V7c0-2.5,2-4.5,4.5-4.5s4.5,2,4.5,4.5V10z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            <path class="st1"
+                                                                  d="m12 16.5c-0.8 0-1.5-0.7-1.5-1.5s0.7-1.5 1.5-1.5 1.5 0.7 1.5 1.5-0.7 1.5-1.5 1.5zm0-2c-0.3 0-0.5 0.2-0.5 0.5s0.2 0.5 0.5 0.5 0.5-0.2 0.5-0.5-0.2-0.5-0.5-0.5z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                    </svg>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                @*<div class="col-md-12 mt-2">
+                        <button type="submit" class="button_sec Register">Register</button>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <p>Already Have An Account? <a href="@Url.Action("Login","Account")">Login</a></p>
+                    </div>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 res_role">
+                                        <div class="col-md-12 res_teacher">
+                                            @*<input type="radio" name="role" class="radio" id="myRadio1" />*@
+                                            @Html.RadioButtonFor(model => model.User_role, "Teacher", new { @class = "radio", id = "myRadio1" })
+                                            <label for="myRadio1">
+                                                <div class="col-12 mt-2 mx-auto Role_div text-center shadow p-3 mb-2 bg-white ">
+                                                    <img src="~/Images/teacher.png" alt="Teacher" />
+                                                    <div class="text-center mt-1 role_heading">
+                                                        <h5>Teacher</h5>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-12 res_student">
+                                            @*<input type="radio" name="role" class="radio" id="myRadio2" />*@
+                                            @Html.RadioButtonFor(model => model.User_role, "Student", new { @class = "radio", id = "myRadio2" })
+
+                                            <label for="myRadio2">
+                                                <div class="col-12 mt-2 mx-auto Role_div text-center shadow p-3 mb-2 bg-white ">
+                                                    <img src="~/Images/student.png" alt="Student" />
+                                                    <div class="text-center mt-1 role_heading">
+                                                        <h5>Student</h5>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-12 res_parents">
+                                            @*<input type="radio" name="role" class="radio" id="myRadio3" />*@
+                                            @Html.RadioButtonFor(model => model.User_role, "Parent", new { @class = "radio", id = "myRadio3" })
+
+                                            <label for="myRadio3">
+                                                <div class="col-12 mt-2 mx-auto Role_div text-center shadow p-3 mb-2 bg-white ">
+                                                    <img src="~/Images/parents.png" alt="Parents" />
+                                                    <div class="text-center mt-1 role_heading">
+                                                        <h5>Parents</h5>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 mx-auto mt-2">
+                                        <button type="submit" class="button_sec Register">Register</button>
+                                    </div>
+                                    <div class="col-md-12 mt-2">
+                                        <p>Already Have An Account? <a href="@Url.Action("Login","Account")">Login</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </body>
+    
+
+
+            <script src="~/js/bootstrap.min.js"></script>
+            <script src="~/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
